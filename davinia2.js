@@ -7,7 +7,7 @@ let textDd = document.createTextNode("La línea telefónica de toda la vida. Par
 dd.appendChild(textDd);
 dl.appendChild(dd);*/
 
-function crearNodo(padre, tipo, texto, funcion) {
+function crearNodo(padre, tipo, texto, funcion) {//funcion es un parametro que se le pasa a la funcion crearNodo() para que se lo pase al boton creado en la funcion crearForm() para que al hacer clic en el boton se ejecute la funcion insertarDTDb() que se encarahg de insertar un nuevo termino con su definicion en el d creado en la funcion crearDL
     let nodo = document.createElement(tipo);
     if (tipo != "input" && tipo != "textarea") {
         let textNodo = document.createTextNode(texto);
@@ -57,11 +57,11 @@ function crearForm() {
 }
 
 function insertarDtDd() {
-    let input = document.getElementsByTagName("input")[1];
-    let textArea = document.getElementsByTagName("textarea")[0];
-    let dl = document.getElementsByTagName("dl")[0];
-    crearNodo(dl, "dt", input.value);
-    crearNodo(dl, "dd", textArea.value);
+    let input = document.getElementsByTagName("input")[1];//el 0 es el input del formulario y el 1 es el input del formulario creado en la funcion crearForm()
+    let textArea = document.getElementsByTagName("textarea")[0];//el 0 es el textarea del formulario creado en la funcion crearForm() porqu no hay otro textarea en el docuemento
+    let dl = document.getElementsByTagName("dl")[0];//el 0 es el dl vreado en la funcion crearDL() pr que no hay otro dl en el documento 
+    crearNodo(dl, "dt", input.value);//el valor del input se lo pasamos a la funcion crearNodo() para que lo inserte en el dl como un dt
+    crearNodo(dl, "dd", textArea.value);//el valor del textarea se lo pasamos a la funcion crearnodo() para que lo inserte en el dl como un dd
 }
 crearDl();
 crearForm();
